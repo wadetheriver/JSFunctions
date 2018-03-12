@@ -1,4 +1,5 @@
-var Calc, calc1;
+// return new object from function
+var Calc, Dog, calc1, dog1;
 
 Calc = function(num1 = 3, num2 = 4) {
   return {
@@ -18,3 +19,20 @@ Calc = function(num1 = 3, num2 = 4) {
 calc1 = new Calc(76, 24);
 
 console.log(calc1.add());
+
+// simple constructor
+Dog = function() {};
+
+dog1 = new Dog();
+
+dog1.name = "Ellie";
+
+dog1.breed = "Redbone";
+
+dog1.info = function() {
+  console.log("this", this);
+  console.dir("dog1", dog1);
+  return console.log(`dog1's name is ${dog1.name} and is a ${dog1.breed}`);
+};
+
+dog1.info();
