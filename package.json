@@ -1,0 +1,17 @@
+{
+  "name": "jsFunctions",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wade spani",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-coffee": "^3.0.2",
+    "gulp-sourcemaps": "^2.6.4"
+  },
+  "dependencies": {}
+}
