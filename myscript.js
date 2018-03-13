@@ -1,6 +1,8 @@
 // Return new object from function
-// Adding method to calc prototype will not work!
-var Calc, Cat, Dog, barnabas, calc1, dog1, getInfo;
+// Adding method to calc prototype will not work,
+// since it is added to constructor function's object prototype and not
+// the returned object's obect prototype
+var Calc, Cat, Dog, barnabas, calc1, dog1, getInfo, speak;
 
 Calc = function(num1 = 3, num2 = 4) {
   return {
@@ -21,16 +23,23 @@ calc1 = new Calc(76, 24);
 
 console.log(calc1.add());
 
-// A function to be added to prototypes
+// A couple functions to be added to prototypes
 getInfo = function() {
   console.log("getInfo's this", this);
   return console.log(`The Pets name is ${this.name} and is a ${this.breed}`);
+};
+
+speak = function(sayWhat) {
+  console.log("speak's this", this);
+  return console.log(sayWhat);
 };
 
 // simple constructor and add prototype
 Dog = function() {};
 
 Dog.prototype.getInfo = getInfo;
+
+Dog.prototype.speak = speak;
 
 //instantiate dog with parameters on the fly
 dog1 = new Dog();
@@ -39,24 +48,32 @@ dog1.name = "Ellie";
 
 dog1.breed = "Redbone";
 
+dog1.says = "woof";
+
 dog1.info = function() {
   console.log("this", this);
   console.dir("dog1", dog1);
   return console.log(`dog1's name is ${dog1.name} and is a ${dog1.breed}`);
 };
 
-dog1.info();
-
+// dog1.info()
 dog1.getInfo();
 
-// use return so coffeescript does not return
-Cat = function(name, breed) {
+dog1.speak("woof");
+
+// use return so coffeescript does not return last statement...
+Cat = function(name, breed, says) {
   this.name = name;
   this.breed = breed;
+  this.says = says;
 };
 
 Cat.prototype.getInfo = getInfo;
 
-barnabas = new Cat('Barnabas', 'Orange Tabby');
+Cat.prototype.speak = speak;
+
+barnabas = new Cat('Barnabas', 'Orange Tabby', 'meow');
 
 barnabas.getInfo();
+
+barnabas.speak(barnabas.says);
