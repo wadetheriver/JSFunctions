@@ -62,3 +62,7 @@ barnabas = new Cat('Barnabas', 'Orange Tabby', 'meow')
 
 barnabas.getInfo()
 barnabas.speak(barnabas.says)
+
+
+for property of barnabas
+  console.log "#{property} : #{barnabas[property]}"

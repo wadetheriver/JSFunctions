@@ -2,7 +2,7 @@
 // Adding method to calc prototype will not work,
 // since it is added to constructor function's object prototype and not
 // the returned object's obect prototype
-var Calc, Cat, Dog, barnabas, calc1, dog1, getInfo, speak;
+var Calc, Cat, Dog, barnabas, calc1, dog1, getInfo, property, speak;
 
 Calc = function(num1 = 3, num2 = 4) {
   return {
@@ -77,3 +77,7 @@ barnabas = new Cat('Barnabas', 'Orange Tabby', 'meow');
 barnabas.getInfo();
 
 barnabas.speak(barnabas.says);
+
+for (property in barnabas) {
+  console.log(`${property} : ${barnabas[property]}`);
+}
