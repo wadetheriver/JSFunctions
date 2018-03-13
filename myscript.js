@@ -1,5 +1,6 @@
-// return new object from function
-var Calc, Dog, calc1, dog1;
+// Return new object from function
+// Adding method to calc prototype will not work!
+var Calc, Cat, Dog, barnabas, calc1, dog1, getInfo;
 
 Calc = function(num1 = 3, num2 = 4) {
   return {
@@ -20,9 +21,18 @@ calc1 = new Calc(76, 24);
 
 console.log(calc1.add());
 
-// simple constructor
+// A function to be added to prototypes
+getInfo = function() {
+  console.log("getInfo's this", this);
+  return console.log(`The Pets name is ${this.name} and is a ${this.breed}`);
+};
+
+// simple constructor and add prototype
 Dog = function() {};
 
+Dog.prototype.getInfo = getInfo;
+
+//instantiate dog with parameters on the fly
 dog1 = new Dog();
 
 dog1.name = "Ellie";
@@ -36,3 +46,17 @@ dog1.info = function() {
 };
 
 dog1.info();
+
+dog1.getInfo();
+
+// use return so coffeescript does not return
+Cat = function(name, breed) {
+  this.name = name;
+  this.breed = breed;
+};
+
+Cat.prototype.getInfo = getInfo;
+
+barnabas = new Cat('Barnabas', 'Orange Tabby');
+
+barnabas.getInfo();

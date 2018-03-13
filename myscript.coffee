@@ -1,4 +1,5 @@
-# return new object from function
+# Return new object from function
+# Adding method to calc prototype will not work!
 Calc = (num1=3, num2=4) ->
   num1 : num1
   num2 : num2
@@ -14,10 +15,16 @@ calc1 = new Calc(76, 24)
 
 console.log calc1.add()
 
+# A function to be added to prototypes
+getInfo = () ->
+  console.log "getInfo's this", this
+  console.log "The Pets name is #{this.name} and is a #{this.breed}"
 
-# simple constructor
+# simple constructor and add prototype
 Dog = () ->
+Dog.prototype.getInfo = getInfo
 
+#instantiate dog with parameters on the fly
 dog1 = new Dog()
 dog1.name = "Ellie"
 dog1.breed = "Redbone"
@@ -27,3 +34,16 @@ dog1.info = () ->
   console.log "dog1's name is #{dog1.name} and is a #{dog1.breed}"
 
 dog1.info()
+dog1.getInfo()
+
+# use return so coffeescript does not return
+Cat = (name, breed) ->
+  this.name = name
+  this.breed = breed
+  return
+
+Cat.prototype.getInfo = getInfo
+
+barnabas = new Cat('Barnabas', 'Orange Tabby')
+
+barnabas.getInfo()
