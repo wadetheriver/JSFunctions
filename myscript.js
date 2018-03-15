@@ -1,20 +1,43 @@
-var barnabas, meowme, speak;
+//arguments
+// an elegant way to increment in reverse on cs?
+var plus, plusv2, plusv3;
 
-speak = function(sayWhat) {
-  console.log(this);
-  console.log(this.says);
-  return console.log(sayWhat);
+plus = function() {
+  var sum;
+  console.log("plus v2");
+  sum = 0;
+  for (var i = arguments.length-1; i>=0; i--) {
+    sum += arguments[i]
+    };
+  return sum;
 };
 
-barnabas = {
-  species: "cat",
-  says: "meow"
+console.log(plus("bird", 0, 1, 2, 3, 65));
+
+//  iterate forward
+plusv2 = function() {
+  var argument, i, len, sum;
+  console.log("plus v2");
+  sum = 0;
+  for (i = 0, len = arguments.length; i < len; i += 1) {
+    argument = arguments[i];
+    sum += argument;
+  }
+  return sum;
 };
 
-speak.call(barnabas, barnabas.says);
+console.log(plusv2(0, 1, 2, 3, 65, "bird"));
 
-speak.apply(barnabas, ["purr"]);
+// iterate reverse as in original js
+plusv3 = function() {
+  var argument, i, sum;
+  console.log("plus v3");
+  sum = 0;
+  for (i = arguments.length - 1; i >= 0; i += -1) {
+    argument = arguments[i];
+    sum += argument;
+  }
+  return sum;
+};
 
-meowme = speak.bind(barnabas);
-
-meowme();
+console.log(plusv3(0, 1, 2, 3, 65, "bird"));
