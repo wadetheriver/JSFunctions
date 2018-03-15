@@ -18,8 +18,7 @@ var socialMedia = {
 
           listHTML += '<li> <a href = "' + theURL + '">';
           listHTML += '<img src= "' + iconPath + '">'
-          listHTML += '</img><a/>'
-          listHTML += "</li>"
+          listHTML += '</img><a/></li>'
         }
 
       listHTML += "</ul>";
@@ -27,3 +26,25 @@ var socialMedia = {
   });
 
 })();
+
+
+// Rays Solution
+var socialList = function() {
+
+  console.log (arguments)
+  console.log (this)
+
+  var  output = '<ul>',
+    myList = document.querySelectorAll('.socialmediaicons');
+
+  for (var key in arguments[0]) {
+    output+= '<li><a href="' + socialMedia[key] + '">' +
+      '<img src="images/' + key + '.png" alt="icon for '+key+'">' +
+      '</a></li>';
+  }
+  output+= '</ul>';
+
+  for (var i = myList.length - 1; i >= 0; i--) {
+    myList[i].innerHTML = output;
+  };
+}(socialMedia); // passing object as arguments!
