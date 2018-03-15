@@ -4,7 +4,7 @@ var plus, plusv2, plusv3;
 
 plus = function() {
   var sum;
-  console.log("plus v2");
+  console.log("plus v1");
   sum = 0;
   for (var i = arguments.length-1; i>=0; i--) {
     sum += arguments[i]
@@ -40,4 +40,5 @@ plusv3 = function() {
   return sum;
 };
 
+// type string not cast (see v1)
 console.log(plusv3(0, 1, 2, 3, 65, "bird"));

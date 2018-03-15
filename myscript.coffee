@@ -1,7 +1,7 @@
 #arguments
   # an elegant way to increment in reverse on cs?
 plus = () ->
-  console.log "plus v2"
+  console.log "plus v1"
   sum = 0
   `for (var i = arguments.length-1; i>=0; i--) {
     sum += arguments[i]
@@ -28,4 +28,5 @@ plusv3 = () ->
     sum += argument
   return sum
 
+# type string not cast (see v1)
 console.log plusv3(0,1,2,3,65,"bird")
