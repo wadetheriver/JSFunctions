@@ -3,10 +3,16 @@
 var wade;
 
 wade = (function() {
+  var DEFAULTS;
+  DEFAULTS = {
+    say: "hello"
+  };
   return {
     speak: function() {
-      console.log("this: ", this);
-      return console.log("hello");
+      var firstArg, statement;
+      firstArg = arguments[0] || '';
+      statement = firstArg.say || DEFAULTS.say;
+      return console.log(`Wade Says: ${statement}`);
     }
   };
 })();
