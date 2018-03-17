@@ -11,7 +11,7 @@ $(document).ready(function() {
         value = object[key];
         if (object.hasOwnProperty(key)) {
           output += '<li><a href = "' + value + '">';
-          output += key + '"</a>"</li>';
+          output += key + '</a></li>';
         }
       }
     }

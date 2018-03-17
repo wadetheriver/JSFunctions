@@ -7,7 +7,7 @@ $(document).ready () ->
       for key, value of object
         if object.hasOwnProperty(key)
           output +='<li><a href = "' + value + '">'
-          output += key + '"</a>"</li>'
+          output += key + '</a></li>'
 
     $("#links").append(output)
     return
