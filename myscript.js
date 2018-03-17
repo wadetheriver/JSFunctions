@@ -1,20 +1,36 @@
-// module
-// can be invoked anywhere, see index.html
-var wade;
+var i, info, key, len, link, ref, value;
 
-wade = (function() {
-  var DEFAULTS;
-  DEFAULTS = {
-    say: "hello"
-  };
-  return {
-    speak: function() {
-      var firstArg, statement;
-      firstArg = arguments[0] || '';
-      statement = firstArg.say || DEFAULTS.say;
-      return console.log(`Wade Says: ${statement}`);
+info = {
+  "full_name": "Ray Villalobos",
+  "title": "Staff Author",
+  "links": [
+    {
+      "blog": "http://iviewsource.com"
+    },
+    {
+      "facebook": "http://facebook.com/iviewsource"
+    },
+    {
+      "youtube": "http://www.youtube.com/planetoftheweb"
+    },
+    {
+      "podcast": "http://feeds.feedburner.com/authoredcontent"
+    },
+    {
+      "twitter": "http://twitter.com/planetoftheweb"
     }
-  };
-})();
+  ]
+};
 
-wade.speak();
+// for...in is "of" in CS
+for (key in info) {
+  value = info[key];
+  console.log(key + " " + value);
+  if (key === "links") {
+    ref = info.links;
+    for (i = 0, len = ref.length; i < len; i++) {
+      link = ref[i];
+      console.log(Object.keys(link) + ":" + Object.values(link));
+    }
+  }
+}
