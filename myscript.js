@@ -1,17 +1,20 @@
-function dataHandler(info) {
-	var output='';
-	for (var i = 0; i <= info.links.length-1; i++) {
-		for (key in info.links[i]) {
-			if (info.links[i].hasOwnProperty(key)) {
-				output += '<li>' +
-				'<a href = "' + info.links[i][key] +
-				'">' + key + '</a>';
-				'</li>';
-	    }
-		}
-	}
-
-	var update = document.getElementById('links');
-	update.innerHTML = output;
-
-}
+$(document).ready(function() {
+  $.getJSON('data.json', function(info) {
+    var i, key, len, object, output, ref, value;
+    output = '';
+    ref = info.links;
+    for (i = 0, len = ref.length; i < len; i++) {
+      object = ref[i];
+// console.log object
+// each array element is an object
+      for (key in object) {
+        value = object[key];
+        if (object.hasOwnProperty(key)) {
+          output += '<li><a href = "' + value + '">';
+          output += key + '"</a>"</li>';
+        }
+      }
+    }
+    $("#links").append(output);
+  });
+});
